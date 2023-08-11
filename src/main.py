@@ -38,14 +38,18 @@ while True:
     print("AQI: " + str(aqi))
     print("Measuring CO2...")
     co2 = ens.CO2
+    print("CO2: " + str(co2))
     print("Measuring TVOC...")
     tvoc = ens.TVOC
+    print("TVOC: " + str(tvoc))
     
     # perform measurements - AHT21
     print("Measuring temperature and humidity...")
     rht = aht.read()
     humidity = rht[0]
+    print("Humidity: " + str(humidity))
     temperature = rht[1]
+    print("Temperature: " + str(temperature))
 
     # set the correct level
     print("Setting level...")
