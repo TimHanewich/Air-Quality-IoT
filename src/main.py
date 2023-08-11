@@ -52,7 +52,7 @@ while True:
     print("Temperature: " + str(temperature))
 
     # set the correct level
-    print("Setting level...")
+    print("Setting Neopixel LEDs...")
     neo.show_level(min(max(aqi, 1), 5))
 
     # increment cycle
