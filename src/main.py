@@ -34,6 +34,7 @@ while True:
     # perform measurements
     print("Measuring AQI...")
     aqi = ens.AQI
+    print("AQI: " + str(aqi))
     print("Measuring CO2...")
     co2 = ens.CO2
     print("Measuring TVOC...")
@@ -46,7 +47,7 @@ while True:
     temperature = rht[1]
 
     # set the correct level
-    neo.show_level(aqi)
+    neo.show_level(min(max(aqi, 1)), 5)
 
     # wait
     time.sleep(60)
