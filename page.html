@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Ambient Air Conditions</h1>
+        <p>Air Quality Index (AQI): <b id="aqi"></b></p>
+        <p>Carbon Dioxide (CO2): <b id="co2"></b></p>
+        <p>Total Volatile Organic Compounds (TVOC): <b id="tvoc"></b></p>
+        <p>Temperature: <b id="temperature"></b></p>
+        <p>Relative Humidity: <b id="humidity"></b></p>
+        <button id="refreshbtn" style="width: 100px; height: 30px;" onclick="refresh()">Refresh</button>
+
+
+        <script>
+
+            var httpreq;
+
+            function refresh()
+            {
+                var server_ip = null;
+
+                // Did they provide a server IP to use? If not, we use the IP of the page we are on right now
+                if (server_ip == null)
+                {
+                    server_ip = window.location.hostname;
+                }
+
+                httpreq = new XMLHttpRequest();
+                httpreq.onreadystatechange = HandleNewData;
+                httpreq.open("GET", "http://" + server_ip + "/data")
+                httpreq.send()
+            }
+
+            function HandleNewData()
+            {
+                if (httpreq.readyState == 4 && httpreq.status == 200)
+                {
+
+                    var response_text = httpreq.responseText;
+                    var obj = JSON.parse(response_text);
+
+                    //Convert temperature in celsius to fahrenheit
+                    var f = (obj["temperature"] * (9/5)) + 32
+                    var degreeSymbol = '\u00B0'
+
+                    document.getElementById("aqi").innerText = obj["aqi"];
+                    document.getElementById("co2").innerText = obj["co2"] + " ppm";
+                    document.getElementById("tvoc").innerText = obj["tvoc"] + " ppb";
+                    document.getElementById("temperature").innerText = f.toFixed(1) + " " + degreeSymbol + "F";
+                    document.getElementById("humidity").innerText = obj["humidity"].toFixed(1) + "%";
+                }
+            }
+
+            refresh()
+
+        </script>
+
+
+
+    </body>
+</html>
