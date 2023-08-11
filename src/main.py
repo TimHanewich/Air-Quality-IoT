@@ -47,7 +47,7 @@ while True:
     temperature = rht[1]
 
     # set the correct level
-    neo.show_level(min(max(aqi, 1)), 5)
+    neo.show_level(min(max(aqi, 1), 5))
 
     # wait
     time.sleep(60)
