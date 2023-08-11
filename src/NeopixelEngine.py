@@ -1,5 +1,6 @@
 import neopixel
 import settings
+import time
 
 lvl1 = (0, 255, 0)
 lvl2 = (156, 247, 9)
@@ -60,5 +61,18 @@ class NeopixelEngine:
             raise Exception("Neopixel level must be 1, 2, 3, 4, or 5")
     
     def clear(self) -> None:
+        self.pix.fill((0, 0, 0))
+        self.pix.show()
+
+    def startup_pattern(self) -> None:
+        self.pix.fill((255, 0, 0))
+        self.pix.show()
+        time.sleep(1)
+        self.pix.fill((0, 255, 0))
+        self.pix.show()
+        time.sleep(1)
+        self.pix.fill((0, 0, 255))
+        self.pix.show()
+        time.sleep(1)
         self.pix.fill((0, 0, 0))
         self.pix.show()
