@@ -27,6 +27,7 @@ co2:int = 0
 tvoc:int = 0
 humidity:float = 0.0 # relative humidity
 temperature:float = 0.0 # celsius
+cycles:int = 0
 #####################
 
 while True:
@@ -47,7 +48,13 @@ while True:
     temperature = rht[1]
 
     # set the correct level
+    print("Setting level...")
     neo.show_level(min(max(aqi, 1), 5))
 
+    # increment cycle
+    cycles = cycles + 1
+    print(str(cycles) + " cycles complete!")
+
     # wait
+    print("Waiting 60 seconds...")
     time.sleep(60)
