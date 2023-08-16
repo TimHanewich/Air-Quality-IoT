@@ -193,8 +193,10 @@ class DFRobot_ENS160(object):
         '''
         ret = True
         chip_id = self._read_reg(ENS160_PART_ID_REG, 2)
+        print("Chip ID is " + str(chip_id))
         logger.info( ((chip_id[1] << 8) | chip_id[0]) )
         if ENS160_PART_ID != ((chip_id[1] << 8) | chip_id[0]):
+            print("FAILED! Wrong chip ID!")
             ret = False
         self.set_PWR_mode(ENS160_STANDARD_MODE)
         self.set_INT_mode(0x00)
@@ -361,6 +363,7 @@ class DFRobot_ENS160_I2C(DFRobot_ENS160):
             data = [data]
             #logger.info(data)
         self.i2c.write_i2c_block_data(self._addr, reg, data)
+        print("Just wrote '" + str(data) + "' to register '" + str(reg) + "'")
 
     def _read_reg(self, reg, length):
         '''!
