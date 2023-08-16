@@ -372,7 +372,9 @@ class DFRobot_ENS160_I2C(DFRobot_ENS160):
           @param length length of data to be read
           @return read data list
         '''
-        return self.i2c.read_i2c_block_data(self._addr, reg, length)
+        to_return = self.i2c.read_i2c_block_data(self._addr, reg, length)
+        print("Just read '" + str(to_return) + "' from register '" + str(reg) + "'")
+        return to_return
 
 
 class DFRobot_ENS160_SPI(DFRobot_ENS160):
