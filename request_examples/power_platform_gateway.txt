@@ -1,0 +1,41 @@
+GET / HTTP/1.1
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US, en; q=0.9
+Max-Forwards: 10
+Referer: https://make.powerautomate.com/
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203
+Origin: https://make.powerautomate.com
+sec-ch-ua: "Not/A)Brand";v="99","Microsoft Edge";v="115","Chromium";v="115"
+x-ms-client-session-id: 9df7c990-3d1a-11ee-960e-1167fbf4ea4f
+sec-ch-ua-mobile: ?0
+x-ms-client-request-id: b4ab9b7b-84a5-4d6d-b86c-b77d3bc893ef
+sec-ch-ua-platform: "Windows"
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+X-MS-APIM-Referrer: https://unitedstates-002.azure-apim.net/apim/air-20quality-20sensor-20test-5fe43ee693b0b4555-1fe52a285548e21b/adef5af4a9c247ea8bf40b5824d7f720
+x-ms-client-region: unitedstates
+x-ms-flavor: Production
+x-ms-gateway-object-id: 
+X-MS-APIM-Referrer-Prefix: https://unitedstates-002.azure-apim.net/apim/air-20quality-20sensor-20test-5fe43ee693b0b4555-1fe52a285548e21b/adef5af4a9c247ea8bf40b5824d7f720
+X-MS-APIM-Callback: https://unitedstates-002.consent.azure-apim.net
+x-ms-environment-id: dc8ebd9e-7b0b-e5d1-8f6c-e85e37bf9105
+X-Forwarded-For: 73.28.174.170, 20.88.153.194:52823
+X-ARR-LOG-ID: 8e2e2809-21ad-4c12-95b2-50293a55a2f4
+CLIENT-IP: 20.88.153.194:52823
+DISGUISED-HOST: 10.0.0.222
+X-SITE-DEPLOYMENT-ID: 10.0.0.222
+WAS-DEFAULT-HOSTNAME: 10.0.0.222
+X-Forwarded-Proto: https
+X-AppService-Proto: https
+X-ARR-SSL: 2048|256|CN=DigiCert SHA2 Secure Server CA, O=DigiCert Inc, C=US|CN=*.azconn-ncus-001.p.azurewebsites.net, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+X-Forwarded-TlsVersion: 1.2
+X-ARR-ClientCert: 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
+X-Original-URL: /
+X-WAWS-Unencoded-URL: /
+x-ms-operationName: 
+x-ms-correlation-id: 290e8a01-be03-4a6c-94dd-e5a40b22acee-self
+x-ms-connection-id: adef5af4a9c247ea8bf40b5824d7f720
+Host: 10.0.0.222
+Connection: Keep-Alive
