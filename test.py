@@ -23,8 +23,8 @@ addr = 0x53
 #i2c.writeto_mem(addr, 0x11, bytes([2]))
 
 # read co2
-co2 = i2c.readfrom_mem(addr, 0x24, 2)
-print(co2)
+#co2 = i2c.readfrom_mem(addr, 0x24, 2)
+#print(co2)
 
 
 
@@ -42,7 +42,10 @@ print(co2)
 #print(co2)
 
 # emulating 2?
+#id = i2c.readfrom_mem(addr, 0x00, 2)
 #i2c.writeto_mem(addr, 16, bytes([2]))
 #time.sleep(0.1)
 #i2c.writeto_mem(addr, 17, bytes([2]))
-time.sleep(0.1)
+#time.sleep(0.1)
+
+print(i2c.readfrom_mem(addr, 36, 2))
