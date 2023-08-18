@@ -14,7 +14,7 @@ The Raspberry Pi Pico, along with the ENS160 + AHT20 sensor breakout board live 
 
 
 ## Web Service
-The web server (written in Python) that runs on the Raspberry Pi Pico W provides two services. Firstly, the `/data` endpoint performs a reading of the **Carbon Dioxide (CO2), Total Volatile Organic Compounds (TVOC), Air Quality Index (AQI), temperature, and humidity via the onboard ENS160 and AHT21 sensors and returns the data as JSON.
+The web server (written in Python) that runs on the Raspberry Pi Pico W provides two services. Firstly, the `/data` endpoint performs a reading of the **Carbon Dioxide (CO2)**, **Total Volatile Organic Compounds (TVOC)**, ***Air Quality Index (AQI)**, **temperature**, and **humidity** via the onboard ENS160 and AHT21 sensors and returns the data as JSON.
 
 Data endpoint (API):  
 ![data endpoint](https://i.imgur.com/C1Tsal0.png)
