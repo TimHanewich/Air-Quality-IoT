@@ -19,7 +19,7 @@ The web server (written in Python) that runs on the Raspberry Pi Pico W provides
 Data endpoint (API):  
 ![data endpoint](https://i.imgur.com/C1Tsal0.png)
 
-The second service the web server provides is a full HTML web page that can be rendered in any internet browser. The HTML page comes with client-side Javascript that consumes the `/data` endpoint mentioned above and displays it in a simple UI.
+The second service the web server provides is a [full HTML web page](./src/page.html) that can be rendered in any internet browser. The HTML page comes with client-side Javascript that consumes the `/data` endpoint mentioned above and displays it in a simple UI.
 
 Web page rendered in browser:
 ![web page](https://i.imgur.com/IKfawIU.png)
