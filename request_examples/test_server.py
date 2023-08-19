@@ -8,7 +8,7 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 while wlan.isconnected() == False:    
     print("Attemping to connect to wifi...")
-    wlan.connect("Marco Polo", "Madeleine2002!")
+    wlan.connect("", "")
     time.sleep(3)
 print("Connected to wifi!")
 my_ip:str = str(wlan.ifconfig()[0])
