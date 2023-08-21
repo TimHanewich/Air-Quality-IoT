@@ -86,6 +86,10 @@ while True:
             temperature = rht[1]
             
             ReturnObj = {"aqi": aqi, "co2": co2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
+
+            # Before responding... if the AQI/CO2/TVOC is 0, it means it needs to be reset. So reset.
+            if aqi == 0:
+                ens.reset()
             
             # respond with OK
             print("Responding...")
