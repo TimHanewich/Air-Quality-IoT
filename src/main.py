@@ -64,52 +64,57 @@ while True:
         # collect bytes
         data = request_tools.read_all(cl, 500)
         print(str(len(data)) + " bytes received")
-        
-        # parse
-        req = request_tools.request.parse(data.decode())
-        
-        if req.method.lower() == "get" and req.path.lower() == "/data":
-            print("It is a request for data")
-            
-            # perform measurements
-            print("Measuring AQI...")
-            aqi = ens.AQI
-            print("Measuring CO2...")
-            co2 = ens.CO2
-            print("Measuring TVOC...")
-            tvoc = ens.TVOC
-            
-            # perform measurements - AHT21
-            print("Measuring temperature and humidity...")
-            rht = aht.read()
-            humidity = rht[0]
-            temperature = rht[1]
-            
-            ReturnObj = {"aqi": aqi, "co2": co2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
 
-            # Before responding... if the AQI/CO2/TVOC is 0, it means it needs to be reset. So reset.
-            if aqi == 0:
-                ens.reset()
+        if len(data) > 0:
+        
+            # parse
+            req = request_tools.request.parse(data.decode())
             
-            # respond with OK
-            print("Responding...")
-            cl.send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n" + json.dumps(ReturnObj))
-            cl.close()
-            print("Responded!")
-            
-        elif req.method.lower() == "get" and req.path.lower() == "/":
-            
-            f = open("page.html")
-            content = f.read()
-            f.close()
-            
-            # respond with OK
-            cl.send("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n" + content)
-            cl.close()
-            
-        else:
-            cl.send("HTTP/1.0 404 NOT FOUND\r\n\r\n");
-            cl.close();            
+            if req.method.lower() == "get" and req.path.lower() == "/data":
+                print("It is a request for data")
+                
+                # perform measurements
+                print("Measuring AQI...")
+                aqi = ens.AQI
+                print("Measuring CO2...")
+                co2 = ens.CO2
+                print("Measuring TVOC...")
+                tvoc = ens.TVOC
+                
+                # perform measurements - AHT21
+                print("Measuring temperature and humidity...")
+                rht = aht.read()
+                humidity = rht[0]
+                temperature = rht[1]
+                
+                ReturnObj = {"aqi": aqi, "co2": co2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
+
+                # Before responding... if the AQI/CO2/TVOC is 0, it means it needs to be reset. So reset.
+                if aqi == 0:
+                    ens.reset()
+                
+                # respond with OK
+                print("Responding...")
+                cl.send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n" + json.dumps(ReturnObj))
+                cl.close()
+                print("Responded!")
+                
+            elif req.method.lower() == "get" and req.path.lower() == "/":
+                
+                f = open("page.html")
+                content = f.read()
+                f.close()
+                
+                # respond with OK
+                cl.send("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n" + content)
+                cl.close()
+                
+            else:
+                cl.send("HTTP/1.0 404 NOT FOUND\r\n\r\n");
+                cl.close();  
+
+        else: # request of 0 bytes (connection?)
+            cl.close()  
         
     except Exception as e:
         print("Fatal error! Msg: " + str(e))
