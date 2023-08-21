@@ -60,7 +60,9 @@ while True:
     print("Connection from " + addr[0] + "!")
     
     try:
-        data = cl.recv(1024)
+
+        # collect bytes
+        data = request_tools.read_all(cl, 500)
         print(str(len(data)) + " bytes received")
         
         # parse
