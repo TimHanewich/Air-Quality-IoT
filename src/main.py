@@ -116,6 +116,7 @@ while True:
                 cl.close();  
 
         else: # request of 0 bytes (connection?)
+            print("Connection with 0 bytes was attempted! Closing...")
             cl.close()  
         
     except Exception as e:
