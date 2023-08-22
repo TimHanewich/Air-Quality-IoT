@@ -11,7 +11,7 @@ import settings
 
 # set up
 led = machine.Pin("LED", machine.Pin.OUT)
-i2c = machine.I2C(0, sda=machine.Pin(12), scl=machine.Pin(13))
+i2c = machine.I2C(1, sda=machine.Pin(14), scl=machine.Pin(15))
 aht = AHT21.AHT21(i2c)
 ens = ENS160.ENS160(i2c)
 ens.operating_mode = 2
