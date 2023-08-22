@@ -27,6 +27,9 @@ addr = 0x53
 #print(co2)
 
 
+# cmd
+#i2c.writeto_mem(addr, 0x12, bytes([0xCC]))
+
 
 
 # EMULATING BEGIN
@@ -47,5 +50,3 @@ addr = 0x53
 #time.sleep(0.1)
 #i2c.writeto_mem(addr, 17, bytes([2]))
 #time.sleep(0.1)
-
-print(i2c.readfrom_mem(addr, 36, 2))
