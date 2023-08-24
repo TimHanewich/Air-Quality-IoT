@@ -5,7 +5,7 @@ I wanted to record and store air quality measurements in the Power Platform and 
 
 ## I...
 
-*Installed* an **on-prem** gateway to allow cloud-based Power Platform resources to call to my local web server and collect air quality data.
+*Installed* an **on-premises gateway** to allow cloud-based Power Platform resources to call to my local web server and collect air quality data.
 ![gateway](https://i.imgur.com/09erpCQ.png)
 
 *Made* a **custom connector** to make HTTP calls to my web server and collect air quality data.
