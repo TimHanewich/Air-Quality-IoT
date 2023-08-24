@@ -21,4 +21,4 @@ I wanted to record and store air quality measurements in the Power Platform and 
 ![model-driven app](https://i.imgur.com/iZv3nzr.png)
 
 *Designed* a basic **Power BI Dashboard** to visualize my data and embedded it in my Model-Driven Power App as a **custom page**.
-![Power BI dashboard](https://imgur.com/a/qDf2ZVQ)
+![Power BI dashboard](https://i.imgur.com/bFQokzL.png)
