@@ -11,7 +11,7 @@ I wanted to record and store air quality measurements in the Power Platform and 
 *Made* a **custom connector** to make HTTP calls to my web server and collect air quality data.
 ![custom connector](https://i.imgur.com/uYe4LLs.png)
 
-*Created* a **Dataverse Table** with appropriate columns to store the air quality data.
+*Created* a **Dataverse Table** with appropriate columns to store the air quality data in Dataverse.
 ![table](https://i.imgur.com/NB3CchK.png)
 
 *Developed* a **Scheduled Power Automate Workflow** to collect and record air quality data every five minutes.
