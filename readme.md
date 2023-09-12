@@ -25,4 +25,6 @@ Web page rendered in browser:
 ![web page](https://i.imgur.com/IKfawIU.png)
 
 ## 3D Printed Housing
+I modeled a simple housing tray for the microcontroller and sensors required for this project. You can download the 3D Model (STL file) [here directly from this GitHub repo](https://github.com/TimHanewich/air-quality-box/releases/download/2/aqb_v1.stl).
 ![3d printed housing](https://i.imgur.com/vjyKvC5.png)
+![tray](https://i.imgur.com/bcAuU1n.jpg)
