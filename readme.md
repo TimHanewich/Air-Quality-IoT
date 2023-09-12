@@ -1,5 +1,5 @@
 # 😷 Home Indoor Air Quality Sensor IoT Project 🫁
-Welcome to my open-source Air Quality Sensor IoT Project! This project is aimed at monitoring your home's indoor air quality in real-time using IoT technology.
+Welcome to my open-source Air Quality Sensor IoT Project! This project monitors your home's indoor air quality in real-time using IoT technology and feeds you data in JSON over a web server.
 
 This project includes: 
 - A web server, written in Python, running on a **Raspberry Pi Pico W**.
