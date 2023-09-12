@@ -22,3 +22,10 @@ I...
 
 ## *Designed* a basic **Power BI Dashboard** to visualize my data and embedded it in my Model-Driven Power App as a **custom page**
 ![Power BI dashboard](https://i.imgur.com/bFQokzL.png)
+
+
+## Resources
+- Power Platform Solutions:
+    - [Custom Connector Only Solution](https://github.com/TimHanewich/air-quality-box/releases/download/3/AirQualityMonitoringCustomConnector_1_0_0_1.zip) - This solution contains *only* the custom connector. It is vital that you install this solution **prior** to installing the full solution because the full solution has connection references that depend on this custom connector. If the custom connector is not present in the environment during installalation, installation of the base solution will fail due to missing dependencies.
+    - [Full (remainder, without the custom connector) Power Platform Solution (.zip) file](https://github.com/TimHanewich/air-quality-box/releases/download/3/AirQualityMonitoring_1_0_0_3.zip).
+- [Interactive Power BI **Air Quality Dashboard**](https://github.com/TimHanewich/air-quality-box/releases/download/1/air_quality_dashboard.pbix). You can embed this in the Model-Driven App that comes as part of the solution above.
