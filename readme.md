@@ -28,3 +28,10 @@ Web page rendered in browser:
 I modeled a simple housing tray for the microcontroller and sensors required for this project. You can download the 3D Model (STL file) [here directly from this GitHub repo](https://github.com/TimHanewich/air-quality-box/releases/download/2/aqb_v1.stl).
 ![3d printed housing](https://i.imgur.com/vjyKvC5.png)
 ![tray](https://i.imgur.com/bcAuU1n.jpg)
+
+## Power Platform Extension
+I further extended this project into the No-Code/Low-Code Realm using Microsoft's Power Platform. 
+
+Using an **on-premises gateway** for brokering communication between the Azure cloud (Power Platform) and my air quality sensor web server on my local network, I developed a **custom connector**, **Dataverse table**, **model-driven app**, and **scheduled Power Automate** workflow to collect data, accompanied with an **interactive Power BI dashboard** for data visualization.
+
+You can read more about the Power Platform integration portion of this project [here](./power_platform/).
