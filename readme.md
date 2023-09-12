@@ -30,6 +30,7 @@ I modeled a simple housing tray for the microcontroller and sensors required for
 ![tray](https://i.imgur.com/bcAuU1n.jpg)
 
 ## Power Platform Extension
+![pp](https://i.imgur.com/aTbNb3F.png)  
 I further extended this project into the No-Code/Low-Code Realm using Microsoft's Power Platform. 
 
 Using an **on-premises gateway** for brokering communication between the Azure cloud (Power Platform) and my air quality sensor web server on my local network, I developed a **custom connector**, **Dataverse table**, **model-driven app**, and **scheduled Power Automate** workflow to collect data, accompanied with an **interactive Power BI dashboard** for data visualization.

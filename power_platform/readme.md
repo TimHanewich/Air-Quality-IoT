@@ -1,4 +1,5 @@
 # Power Platform Extension
+![pp](https://i.imgur.com/aTbNb3F.png)  
 I extended functionality of this project into the [Power Platform](https://powerplatform.microsoft.com/en-us/) for data reporting/visualization purposes. Please keep in mind that this is only an *extension* of project functionality and is *not* required to establish core functionality as described on this project's [main page](./../readme.md).
 
 I wanted to record and store air quality measurements in the Power Platform and build an interactive dashboard to show me air quality trends over time.
