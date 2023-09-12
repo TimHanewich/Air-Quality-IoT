@@ -29,7 +29,7 @@ I modeled a simple housing tray for the microcontroller and sensors required for
 ![3d printed housing](https://i.imgur.com/vjyKvC5.png)
 ![tray](https://i.imgur.com/bcAuU1n.jpg)
 
-## Power Platform Extension
+## [Power Platform Extension](./power_platform/)
 ![pp](https://i.imgur.com/aTbNb3F.png)  
 I further extended this project into the No-Code/Low-Code Realm using Microsoft's Power Platform. 
 
