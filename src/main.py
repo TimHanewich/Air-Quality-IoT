@@ -23,6 +23,7 @@ led.off()
 time.sleep(0.5)
 
 # set up
+print("Setting up ENS160 and AHT21 interface via I2C...")
 i2c = machine.I2C(1, sda=machine.Pin(14), scl=machine.Pin(15))
 aht = AHT21.AHT21(i2c)
 ens = ENS160.ENS160(i2c)
@@ -32,6 +33,7 @@ ens.operating_mode = 2
 time.sleep(2.0)
 
 # connect to wifi
+print("Preparing for wifi connection...")
 wifi_con_attempt:int = 0
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
