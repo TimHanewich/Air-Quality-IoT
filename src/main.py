@@ -103,6 +103,8 @@ while True:
             led.off()
             wdt.feed()
             time.sleep(1)
+    else:
+        print("Sample upload successfully accepted!")
 
     # increment tracker
     samples_uploaded = samples_uploaded + 1
