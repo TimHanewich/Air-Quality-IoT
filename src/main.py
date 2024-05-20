@@ -59,6 +59,7 @@ wdt.feed()
 print("Watchdog timer now activated.")
 
 # Enter infinite loop
+samples_uploaded:int = 0
 while True:
 
     # LED on while we are doing something
@@ -92,10 +93,13 @@ while True:
     pr.close()
     print("HTTP call made!")
 
+    # increment tracker
+    samples_uploaded = samples_uploaded + 1
+
     # wait for time
     led.off() # led off while doing nothing (just waiting)
     next_loop:int = time.ticks_ms() + (1000 * settings.sample_time_seconds)
     while (time.ticks_ms() < next_loop):
-        print("Sampling next in " + str(round((next_loop - time.ticks_ms()) / 1000, 0)) + " seconds...")
+        print("Sampling #" + str(samples_uploaded + 1) + " next in " + str(round((next_loop - time.ticks_ms()) / 1000, 0)) + " seconds...")
         time.sleep(1)
         wdt.feed()
