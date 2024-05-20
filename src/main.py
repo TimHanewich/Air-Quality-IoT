@@ -32,19 +32,22 @@ ens.operating_mode = 2
 time.sleep(2.0)
 
 # connect to wifi
+wifi_con_attempt:int = 0
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 while wlan.isconnected() == False:
+
+    wifi_con_attempt = wifi_con_attempt + 1
 
     # blip light
     led.on()
     time.sleep(0.1)
     led.off()
     
-    print("Attemping to connect to wifi...")
+    print("Attempt #" + str(wifi_con_attempt) + " to connect to wifi...")
     wlan.connect(settings.ssid, settings.password)
     time.sleep(3)
-print("Connected to wifi!")
+print("Connected to wifi after " + str(wifi_con_attempt) + " tries!")
 my_ip:str = str(wlan.ifconfig()[0])
 print("My IP Address: " + my_ip)
 
