@@ -52,18 +52,27 @@ print("My IP Address: " + my_ip)
 while True:
 
     # take reading from ENS160
+    print("Taking ENS160 measurements... ")
     aqi:int = ens.AQI
     eco2:int = ens.CO2
     tvoc:int = ens.TVOC
     
     # take reading from AHT21
+    print("Taking AHT21 measurements...")
     rht = aht.read()
     humidity:float = rht[0]
     temperature:float = rht[1]
 
     # create json body
     body = {"aqi": aqi, "eco2": eco2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
+    print("Measurements taken! " + str(body))
     
     # make HTTP call
+    print("Making HTTP call...")
     pr = urequests.post(settings.post_url, json=body)
     pr.close()
+    print("HTTP call made!")
+
+    # wait
+    print("Now waiting for " + str(settings.sample_time_seconds) + " seconds...")
+    time.sleep(settings.sample_time_seconds)
