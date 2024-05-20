@@ -61,6 +61,9 @@ print("Watchdog timer now activated.")
 # Enter infinite loop
 while True:
 
+    # LED on while we are doing something
+    led.on()
+
     # take reading from ENS160
     print("Taking ENS160 measurements... ")
     aqi:int = ens.AQI
@@ -90,6 +93,7 @@ while True:
     print("HTTP call made!")
 
     # wait for time
+    led.off() # led off while doing nothing (just waiting)
     next_loop:int = time.ticks_ms() + (1000 * settings.sample_time_seconds)
     while (time.ticks_ms() < next_loop):
         print("Sampling next in " + str(round((next_loop - time.ticks_ms()) / 1000, 0)) + " seconds...")
