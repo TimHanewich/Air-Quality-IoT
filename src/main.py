@@ -1,12 +1,10 @@
 import machine
 import network
-import socket
-import json
 import time
-import request_tools
 import AHT21
 import ENS160
 import settings
+import urequests
 
 # boot pattern
 led = machine.Pin("LED", machine.Pin.OUT)
@@ -50,83 +48,22 @@ print("Connected to wifi!")
 my_ip:str = str(wlan.ifconfig()[0])
 print("My IP Address: " + my_ip)
 
-# start listening
-addr = socket.getaddrinfo("0.0.0.0", 80)[0][-1]
-s = socket.socket()
-s.bind(addr)
-s.listen(1)
-led.on()
+# Enter infinite loop
 while True:
-    print("Awaiting connection...")
-    cl, addr = s.accept()
-    print("Connection from " + addr[0] + "!")
-    
-    try:
 
-        # collect bytes
-        data = request_tools.read_all(cl, 500)
-        print(str(len(data)) + " bytes received")
+    # take reading from ENS160
+    aqi:int = ens.AQI
+    eco2:int = ens.CO2
+    tvoc:int = ens.TVOC
+    
+    # take reading from AHT21
+    rht = aht.read()
+    humidity:float = rht[0]
+    temperature:float = rht[1]
 
-        if len(data) > 0:
-        
-            # parse
-            req = request_tools.request.parse(data.decode())
-            
-            if req.method.lower() == "get" and req.path.lower() == "/data":
-                print("It is a request for data")
-                
-                # perform measurements
-                print("Measuring AQI...")
-                aqi = ens.AQI
-                print("Measuring CO2...")
-                co2 = ens.CO2
-                print("Measuring TVOC...")
-                tvoc = ens.TVOC
-                
-                # perform measurements - AHT21
-                print("Measuring temperature and humidity...")
-                rht = aht.read()
-                humidity = rht[0]
-                temperature = rht[1]
-                
-                ReturnObj = {"aqi": aqi, "co2": co2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
-
-                # Before responding... if the AQI/CO2/TVOC is 0, it means it needs to be reset. So reset.
-                if aqi == 0:
-                    ens.reset()
-                
-                # respond with OK
-                print("Responding...")
-                cl.send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n" + json.dumps(ReturnObj))
-                cl.close()
-                print("Responded!")
-                
-            elif req.method.lower() == "get" and req.path.lower() == "/":
-                
-                f = open("page.html")
-                content = f.read()
-                f.close()
-                
-                # respond with OK
-                cl.send("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n" + content)
-                cl.close()
-                
-            else:
-                cl.send("HTTP/1.0 404 NOT FOUND\r\n\r\n");
-                cl.close();  
-
-        else: # request of 0 bytes (connection?)
-            print("Connection with 0 bytes was attempted! Closing...")
-            cl.close()  
-        
-    except Exception as e:
-        print("Fatal error! Msg: " + str(e))
-        cl.send("HTTP/1.0 500 INTERNAL SERVER ERROR\r\n\r\n")
-        cl.close()
-        
+    # create json body
+    body = {"aqi": aqi, "eco2": eco2, "tvoc": tvoc, "humidity": humidity, "temperature": temperature}
     
-    
-    
-    
-    
-    
+    # make HTTP call
+    pr = urequests.post(settings.post_url, json=body)
+    pr.close()
