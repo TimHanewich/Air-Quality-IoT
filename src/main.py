@@ -93,6 +93,17 @@ while True:
     pr.close()
     print("HTTP call made!")
 
+    # if the status code of the HTTP response was not succesful (not in the 200 range), go into an infinite loop of
+    # This is here so the program will stop if, for example, the receiving endpoint is no longer active or accepting.
+    if str(pr.status_code)[0:1] != "2":
+        while True: 
+            led.on()
+            wdt.feed()
+            time.sleep(1)
+            led.off()
+            wdt.feed()
+            time.sleep(1)
+
     # increment tracker
     samples_uploaded = samples_uploaded + 1
 
