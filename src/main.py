@@ -90,6 +90,6 @@ while True:
     # wait for time
     next_loop:int = time.ticks_ms() + (1000 * settings.sample_time_seconds)
     while (time.ticks_ms() < next_loop):
-        print("Sampling next in " + str(round((next_loop - time.ticks_ms()) / 1000), 0) + " seconds...")
+        print("Sampling next in " + str(round((next_loop - time.ticks_ms()) / 1000, 0)) + " seconds...")
         time.sleep(1)
         wdt.feed()
