@@ -61,6 +61,7 @@ while True:
     print("Taking AHT21 measurements...")
     rht = aht.read()
     humidity:float = rht[0]
+    humidity = humidity / 100
     temperature:float = rht[1]
 
     # create json body
