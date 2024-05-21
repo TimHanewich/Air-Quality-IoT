@@ -70,13 +70,19 @@ while True:
     aqi:int = ens.AQI
     eco2:int = ens.CO2
     tvoc:int = ens.TVOC
+    print("AQI: " + str(aqi) + ", ECO2: " + str(eco2) + ", TVOC: " + str(tvoc))
     wdt.feed()
 
     # if there was an error getting legit values from the ENS160
     if aqi == 0 or eco2 == 0 or tvoc == 0:
+        print("AQI, ECO2, or TVOC readings were not successful! Going into troubleshooting mode.")
         while aqi == 0 or eco2 == 0 or tvoc == 0: # go into troubleshooting mode, trying to recover ENS160 functionality, until solved for.
 
+            # print msg
+            print("AQI/ECO2/TVOC reading unsuccessful at last attempt. Will try to reset again.")
+
             # flash quickly to show an issue
+            print("Playing troubleshooting LED pattern...")
             for x in range(0, 5): 
                 led.on()
                 time.sleep(0.05)
@@ -84,10 +90,12 @@ while True:
                 time.sleep(0.05)
                 wdt.feed()
             
+            print("Resetting ENS160...")
             ens.reset() # reset
             wdt.feed() # feed watchdog timer
             
             # take sample
+            print("Sampling ENS160 after reset...")
             time.sleep(1)
             led.on()
             aqi = ens.AQI
