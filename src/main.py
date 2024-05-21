@@ -71,6 +71,30 @@ while True:
     eco2:int = ens.CO2
     tvoc:int = ens.TVOC
     wdt.feed()
+
+    # if there was an error getting legit values from the ENS160
+    if aqi == 0 or eco2 == 0 or tvoc == 0:
+        while aqi == 0 or eco2 == 0 or tvoc == 0: # go into troubleshooting mode, trying to recover ENS160 functionality, until solved for.
+
+            # flash quickly to show an issue
+            for x in range(0, 5): 
+                led.on()
+                time.sleep(0.05)
+                led.off()
+                time.sleep(0.05)
+                wdt.feed()
+            
+            ens.reset() # reset
+            wdt.feed() # feed watchdog timer
+            
+            # take sample
+            time.sleep(1)
+            led.on()
+            aqi = ens.AQI
+            eco2 = ens.CO2
+            tvoc = ens.TVOC
+            wdt.feed()
+            led.off()
     
     # take reading from AHT21
     print("Taking AHT21 measurements...")
